@@ -2,6 +2,7 @@ import { Schema, model, Types } from "mongoose";
 
 export interface IUser {
   _id?: Types.ObjectId;
+  fullname: string;
   username: string;
   email: string;
   password: string;
@@ -17,6 +18,12 @@ export interface IUser {
 const userSchema = new Schema<IUser>(
   {
     username: {
+      type: String,
+      required: true,
+      unique: true,
+      trim: true,
+    },
+    fullname: {
       type: String,
       required: true,
       unique: true,

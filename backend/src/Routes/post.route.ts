@@ -16,7 +16,7 @@ postRouter
 
 postRouter
   .route("/api/post/:id")
-  .patch(authMiddleware, upload.single("image"), updatePost)
+  .patch(authMiddleware, upload.any(), updatePost)
   .delete(authMiddleware, deletePost);
 
 postRouter

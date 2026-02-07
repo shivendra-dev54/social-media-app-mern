@@ -68,7 +68,13 @@ export const signin = asyncHandler(async (req, res) => {
         200,
         "successfully logged in.",
         true,
-        null
+        {
+          "_id": userWithSameEmail._id,
+          "username": userWithSameEmail.username,
+          "fullname": userWithSameEmail.fullname,
+          "email": userWithSameEmail.email,
+          "bio": userWithSameEmail.bio
+        }
       ).toString()
     );
 });

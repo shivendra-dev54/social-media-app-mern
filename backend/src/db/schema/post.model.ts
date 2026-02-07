@@ -22,7 +22,10 @@ const postSchema = new Schema<IPost>(
       type: String,
       maxlength: 1000,
     },
-    image: String,
+    image: {
+      type: String,
+      maxlength: 1000,
+    },
     likes: [{ type: Schema.Types.ObjectId, ref: "User" }],
     commentsCount: {
       type: Number,

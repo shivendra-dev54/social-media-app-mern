@@ -4,9 +4,9 @@ import { hashPassword } from "../utils/hashPassword";
 import { ApiResponse } from "../utils/ApiResponse";
 
 export const signup = asyncHandler(async (req, res) => {
-  const { username, email, password } = req.body;
+  const { fullname, username, bio, email, password } = req.body;
 
-  if (!username || !email || !password) {
+  if (!fullname || !username || !email || !password) {
     return res
       .status(400)
       .json(
@@ -37,6 +37,8 @@ export const signup = asyncHandler(async (req, res) => {
 
   const user: IUser = await User.create({
     username,
+    fullname,
+    bio,
     email,
     password: hashedPassword,
   });
