@@ -1,13 +1,13 @@
 import * as jose from "jose";
-import { User } from "../db/schema/user.model";
-import { asyncHandler } from "../utils/asyncHandler";
-import { ApiResponse } from "../utils/ApiResponse";
-import { getAccessToken } from "../utils/getAccessToken";
-import { getRefreshToken } from "../utils/getRefreshToken";
+import { User } from "../db/schema/user.model.js";
+import { asyncHandler } from "../utils/asyncHandler.js";
+import { ApiResponse } from "../utils/ApiResponse.js";
+import { getAccessToken } from "../utils/getAccessToken.js";
+import { getRefreshToken } from "../utils/getRefreshToken.js";
 import {
   refreshCookieOptions,
   accessCookieOptions,
-} from "../utils/cookiesOption";
+} from "../utils/cookiesOption.js";
 
 interface RefreshTokenPayload {
   username: string;

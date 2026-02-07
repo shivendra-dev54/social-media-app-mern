@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router";
 import { api } from "../lib/axios";
-import type { Post } from "../components/PostCard";
+import type { Post } from "./Feed";
 
 export default function UpdatePost() {
   const { id } = useParams();
@@ -36,7 +36,7 @@ export default function UpdatePost() {
     fetchPost();
   }, [id, navigate]);
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.SubmitEvent) => {
     e.preventDefault();
 
     if (!content && !image && !existingImage) {

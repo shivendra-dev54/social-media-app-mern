@@ -1,8 +1,8 @@
-import { asyncHandler } from "../utils/asyncHandler";
-import { ApiResponse } from "../utils/ApiResponse";
-import { CustomRequest } from "../interfaces/CustomRequest";
-import { uploadOnCloudinary } from "../utils/cloudinary";
-import { IPost, Post } from "../db/schema/post.model";
+import { asyncHandler } from "../utils/asyncHandler.js";
+import { ApiResponse } from "../utils/ApiResponse.js";
+import { CustomRequest } from "../interfaces/CustomRequest.js";
+import { uploadOnCloudinary } from "../utils/cloudinary.js";
+import { IPost, Post } from "../db/schema/post.model.js";
 
 export const createPost = asyncHandler(async (req, res) => {
   const { content } = req.body;

@@ -1,10 +1,10 @@
 import { Router } from "express";
-import { authMiddleware } from "../Middleware/auth.middleware";
-import { createComment } from "../Controllers/create.comment.controller";
-import { getCommentsByPost } from "../Controllers/get.comment.controller";
-import { updateComment } from "../Controllers/update.comment.controller";
-import { deleteComment } from "../Controllers/delete.comment.controller";
-import { toggleCommentLike } from "../Controllers/toggleLike.comment.controller";
+import { authMiddleware } from "../Middleware/auth.middleware.js";
+import { createComment } from "../Controllers/create.comment.controller.js";
+import { getCommentsByPost } from "../Controllers/get.comment.controller.js";
+import { updateComment } from "../Controllers/update.comment.controller.js";
+import { deleteComment } from "../Controllers/delete.comment.controller.js";
+import { toggleCommentLike } from "../Controllers/toggleLike.comment.controller.js";
 export const commentRouter = Router();
 
 commentRouter.post(

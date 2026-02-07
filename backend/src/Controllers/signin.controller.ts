@@ -1,10 +1,10 @@
-import { User } from "../db/schema/user.model";
-import { asyncHandler } from "../utils/asyncHandler"
-import { ApiResponse } from "../utils/ApiResponse";
-import { checkPassword } from "../utils/checkPassword";
-import { getAccessToken } from "../utils/getAccessToken";
-import { getRefreshToken } from "../utils/getRefreshToken";
-import { accessCookieOptions, refreshCookieOptions } from "../utils/cookiesOption";
+import { User } from "../db/schema/user.model.js";
+import { asyncHandler } from "../utils/asyncHandler.js"
+import { ApiResponse } from "../utils/ApiResponse.js";
+import { checkPassword } from "../utils/checkPassword.js";
+import { getAccessToken } from "../utils/getAccessToken.js";
+import { getRefreshToken } from "../utils/getRefreshToken.js";
+import { accessCookieOptions, refreshCookieOptions } from "../utils/cookiesOption.js";
 
 export const signin = asyncHandler(async (req, res) => {
   const { email, password } = req.body;

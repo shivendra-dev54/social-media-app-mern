@@ -1,5 +1,5 @@
 import * as jose from "jose";
-import { IUser } from "../db/schema/user.model";
+import { IUser } from "../db/schema/user.model.js";
 
 export const getRefreshToken = async (user: IUser) => {
   const refresh_secret = new TextEncoder().encode(process.env.REFRESH_SECRET);

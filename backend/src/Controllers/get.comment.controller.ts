@@ -1,6 +1,6 @@
-import { Comment } from "../db/schema/comment.model";
-import { ApiResponse } from "../utils/ApiResponse";
-import { asyncHandler } from "../utils/asyncHandler";
+import { Comment } from "../db/schema/comment.model.js";
+import { ApiResponse } from "../utils/ApiResponse.js";
+import { asyncHandler } from "../utils/asyncHandler.js";
 
 export const getCommentsByPost = asyncHandler(async (req, res) => {
   const { postId } = req.params;

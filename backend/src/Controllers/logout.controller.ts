@@ -1,6 +1,6 @@
-import { User } from "../db/schema/user.model";
-import { asyncHandler } from "../utils/asyncHandler";
-import { ApiResponse } from "../utils/ApiResponse";
+import { User } from "../db/schema/user.model.js";
+import { asyncHandler } from "../utils/asyncHandler.js";
+import { ApiResponse } from "../utils/ApiResponse.js";
 
 export const logout = asyncHandler(async (req, res) => {
   const refresh_token = req.cookies.refresh_token;

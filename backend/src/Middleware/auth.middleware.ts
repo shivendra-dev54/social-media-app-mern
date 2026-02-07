@@ -1,8 +1,8 @@
 import { Request, Response, NextFunction } from "express";
 import * as jose from "jose";
-import { User } from "../db/schema/user.model";
-import { ApiResponse } from "../utils/ApiResponse";
-import { CustomRequest } from "../interfaces/CustomRequest";
+import { User } from "../db/schema/user.model.js";
+import { ApiResponse } from "../utils/ApiResponse.js";
+import { CustomRequest } from "../interfaces/CustomRequest.js";
 
 interface AccessTokenPayload {
   _id: string;

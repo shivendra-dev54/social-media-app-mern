@@ -1,12 +1,12 @@
 import { Router } from "express";
-import { createPost } from "../Controllers/createPost.controller";
-import { getPosts } from "../Controllers/getPosts.controller";
-import { deletePost } from "../Controllers/deletePost.controller";
-import { updatePost } from "../Controllers/updatePost.controller";
-import { authMiddleware } from "../Middleware/auth.middleware";
-import { upload } from "../Middleware/multer.middleware";
-import { togglePostLike } from "../Controllers/togglePostLike.controller";
-import { getPost } from "../Controllers/getPost.controller";
+import { createPost } from "../Controllers/createPost.controller.js";
+import { getPosts } from "../Controllers/getPosts.controller.js";
+import { deletePost } from "../Controllers/deletePost.controller.js";
+import { updatePost } from "../Controllers/updatePost.controller.js";
+import { authMiddleware } from "../Middleware/auth.middleware.js";
+import { upload } from "../Middleware/multer.middleware.js";
+import { togglePostLike } from "../Controllers/togglePostLike.controller.js";
+import { getPost } from "../Controllers/getPost.controller.js";
 
 export const postRouter = Router();
 
