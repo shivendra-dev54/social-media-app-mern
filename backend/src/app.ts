@@ -12,7 +12,7 @@ dbConnect();
 
 app.use(
   cors({
-    origin: process.env.PORT,
+    origin: process.env.ALLOWED_ORIGINS,
     credentials: true,
   })
 );
