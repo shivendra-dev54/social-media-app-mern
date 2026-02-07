@@ -2,16 +2,7 @@ import { api } from "../lib/axios";
 import { useState } from "react";
 import { useAuthStore } from "../store/Authstore";
 import { Link } from "react-router";
-
-export interface Post {
-  _id: string;
-  author: string;
-  content?: string;
-  image?: string;
-  likes: string[];
-  commentsCount: number;
-  createdAt: string;
-}
+import type { Post } from "../Pages/Feed";
 
 export function PostCard({
   post,
@@ -22,7 +13,7 @@ export function PostCard({
 }) {
   const { user } = useAuthStore();
 
-  const isOwner = user?._id === post.author;
+  const isOwner = user?._id === post.author._id;
 
   const [isLiked, setIsLiked] = useState(
     user ? post.likes.includes(user._id) : false
@@ -72,7 +63,7 @@ export function PostCard({
             style={{ width: 40, height: 40 }}
           />
           <div>
-            <div className="fw-semibold">User</div>
+            <div className="fw-semibold">{post.author.username}</div>
             <small className="text-secondary">
               {new Date(post.createdAt).toLocaleString()}
             </small>
@@ -99,7 +90,12 @@ export function PostCard({
             ♥ {likes}
           </button>
 
-          <span>💬 {post.commentsCount}</span>
+          <Link
+            to={`/app/post/${post._id}/comments`}
+            className="text-secondary text-decoration-none"
+          >
+            💬 {post.commentsCount}
+          </Link>
 
           {isOwner && (
             <div className="ms-auto d-flex gap-2">

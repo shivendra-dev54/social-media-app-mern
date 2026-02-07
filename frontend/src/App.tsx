@@ -4,12 +4,12 @@ import { Homepage } from "./Pages/Homepage";
 import { SigninPage } from "./Pages/signInPage";
 import { SignupPage } from "./Pages/signUpPage";
 import Feed from "./Pages/Feed";
-import CreatePost from "./Pages/CreatePost";
 import { useAuthStore } from "./store/Authstore";
 import type { JSX } from "react";
 import UpdatePost from "./Pages/UpdatePost";
+import PostCommentsPage from "./Pages/PostCommentsPage";
 
-function ProtectedRoute({ children }: { children: JSX.Element }) {
+export function ProtectedRoute({ children }: { children: JSX.Element }) {
   const { user } = useAuthStore();
   return user ? children : <Navigate to="/signin" />;
 }
@@ -30,16 +30,15 @@ function App() {
             <Feed />
           </ProtectedRoute>
         } />
-        <Route path="/app/create" element={
-          <ProtectedRoute>
-            <CreatePost />
-          </ProtectedRoute>
-        } />
         <Route path="/app/post/:id/edit" element={
           <ProtectedRoute>
             <UpdatePost />
           </ProtectedRoute>
         } />
+        <Route path="/app/post/:postId/comments" element={
+          <PostCommentsPage />
+        } />
+
       </Routes>
     </div>
   )

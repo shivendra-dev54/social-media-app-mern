@@ -6,6 +6,7 @@ import { updatePost } from "../Controllers/updatePost.controller";
 import { authMiddleware } from "../Middleware/auth.middleware";
 import { upload } from "../Middleware/multer.middleware";
 import { togglePostLike } from "../Controllers/togglePostLike.controller";
+import { getPost } from "../Controllers/getPost.controller";
 
 export const postRouter = Router();
 
@@ -17,7 +18,8 @@ postRouter
 postRouter
   .route("/api/post/:id")
   .patch(authMiddleware, upload.any(), updatePost)
-  .delete(authMiddleware, deletePost);
+  .delete(authMiddleware, deletePost)
+  .get(getPost);
 
 postRouter
   .route("/api/post/:id/like")
