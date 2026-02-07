@@ -1,10 +1,10 @@
 import express from "express";
 import cors from "cors";
-import dbConnect from "./db/dbConnect";
+import dbConnect from "./db/dbConnect.js";
 import cookieParser from "cookie-parser";
-import { authRouter } from "./Routes/auth.route";
-import { postRouter } from "./Routes/post.route";
-import { commentRouter } from "./Routes/comment.route";
+import { authRouter } from "./Routes/auth.route.js";
+import { postRouter } from "./Routes/post.route.js";
+import { commentRouter } from "./Routes/comment.route.js";
 
 const app = express();
 

@@ -1,7 +1,7 @@
-import { Comment } from "../db/schema/comment.model";
-import { CustomRequest } from "../interfaces/CustomRequest";
-import { ApiResponse } from "../utils/ApiResponse";
-import { asyncHandler } from "../utils/asyncHandler";
+import { Comment } from "../db/schema/comment.model.js";
+import { CustomRequest } from "../interfaces/CustomRequest.js";
+import { ApiResponse } from "../utils/ApiResponse.js";
+import { asyncHandler } from "../utils/asyncHandler.js";
 
 export const updateComment = asyncHandler(async (req, res) => {
   const { commentId } = req.params;

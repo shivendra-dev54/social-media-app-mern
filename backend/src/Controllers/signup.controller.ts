@@ -1,7 +1,7 @@
-import { IUser, User } from "../db/schema/user.model";
-import { asyncHandler } from "../utils/asyncHandler"
-import { hashPassword } from "../utils/hashPassword";
-import { ApiResponse } from "../utils/ApiResponse";
+import { IUser, User } from "../db/schema/user.model.js";
+import { asyncHandler } from "../utils/asyncHandler.js"
+import { hashPassword } from "../utils/hashPassword.js";
+import { ApiResponse } from "../utils/ApiResponse.js";
 
 export const signup = asyncHandler(async (req, res) => {
   const { fullname, username, bio, email, password } = req.body;

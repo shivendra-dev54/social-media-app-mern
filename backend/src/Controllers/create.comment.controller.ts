@@ -1,8 +1,9 @@
-import { asyncHandler } from "../utils/asyncHandler";
-import { ApiResponse } from "../utils/ApiResponse";
-import { Comment } from "../db/schema/comment.model";
-import { Post } from "../db/schema/post.model";
-import { CustomRequest } from "../interfaces/CustomRequest";
+import { Comment } from "../db/schema/comment.model.js";
+import { Post } from "../db/schema/post.model.js";
+import { CustomRequest } from "../interfaces/CustomRequest.js";
+import { ApiResponse } from "../utils/ApiResponse.js";
+import { asyncHandler } from "../utils/asyncHandler.js";
+
 
 export const createComment = asyncHandler(async (req, res) => {
   const { postId: postId } = req.params;

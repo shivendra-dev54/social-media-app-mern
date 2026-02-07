@@ -71,7 +71,8 @@ backend/
 │   └── schema/
 ├── utils/
 ├── interfaces/
-└── app.ts
+├── app.ts
+└── server.ts
 
 ```
 

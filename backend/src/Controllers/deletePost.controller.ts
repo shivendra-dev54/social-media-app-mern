@@ -1,8 +1,8 @@
-import { asyncHandler } from "../utils/asyncHandler";
-import { ApiResponse } from "../utils/ApiResponse";
-import { Post } from "../db/schema/post.model";
-import { deleteFromCloudinary } from "../utils/cloudinary";
-import { CustomRequest } from "../interfaces/CustomRequest";
+import { asyncHandler } from "../utils/asyncHandler.js";
+import { ApiResponse } from "../utils/ApiResponse.js";
+import { Post } from "../db/schema/post.model.js";
+import { deleteFromCloudinary } from "../utils/cloudinary.js";
+import { CustomRequest } from "../interfaces/CustomRequest.js";
 
 export const deletePost = asyncHandler(async (req, res) => {
   const { id: postId } = req.params as { id: string };
