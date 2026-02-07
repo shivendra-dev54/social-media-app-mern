@@ -1,12 +1,14 @@
 import { useEffect, useState } from "react";
 import { api } from "../lib/axios";
 import { PostCard } from "../components/PostCard";
-import { Link } from "react-router";
-import { useAuthStore } from "../store/Authstore";
+import CreatePost from "../components/CreatePost";
 
-interface Post {
+export interface Post {
   _id: string;
-  author: string;
+  author: {
+    _id: string;
+    username: string;
+  };
   content?: string;
   image?: string;
   likes: string[];
@@ -17,7 +19,7 @@ interface Post {
 export default function Feed() {
   const [posts, setPosts] = useState<Post[]>([]);
   const [loading, setLoading] = useState(true);
-  const { user } = useAuthStore();
+  const [isCreatingNew, setIsCreatingNew] = useState(false);
 
   useEffect(() => {
     const fetchPosts = async () => {
@@ -32,7 +34,7 @@ export default function Feed() {
     };
 
     fetchPosts();
-  }, []);
+  }, [isCreatingNew]);
 
   const handleDelete = (id: string) => {
     setPosts((prev) => prev.filter((post) => post._id !== id));
@@ -43,20 +45,23 @@ export default function Feed() {
       <div className="row justify-content-center">
         <div className="col-12 col-md-8 col-lg-6">
 
-          {/* ✅ Create post CTA */}
-          {user && (
-            <div className="card bg-dark text-light border-secondary mb-3">
+          {/* Create post entry */}
+          {isCreatingNew ? (
+            <CreatePost setIsCreatingNew={setIsCreatingNew} />
+          ) : (
+            <div
+              className="card bg-dark text-light border-secondary mb-3"
+              onClick={() => setIsCreatingNew(true)}
+              style={{ cursor: "pointer" }}
+            >
               <div className="card-body d-flex gap-3">
                 <div
                   className="rounded-circle bg-secondary"
-                  style={{ width: 40, height: 40 }}
+                  style={{ width: 45, height: 40 }}
                 />
-                <Link
-                  to="/app/create"
-                  className="form-control bg-dark text-secondary border-secondary text-decoration-none"
-                >
-                  What’s on your mind?
-                </Link>
+                <div className="form-control bg-dark text-secondary border-secondary">
+                  What's on your mind?
+                </div>
               </div>
             </div>
           )}
