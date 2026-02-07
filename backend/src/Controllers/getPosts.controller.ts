@@ -4,7 +4,6 @@ import { Post } from "../db/schema/post.model";
 
 export const getPosts = asyncHandler(async (_req, res) => {
   const posts = await Post.find()
-    .populate("author", "username avatar")
     .sort({ createdAt: -1 });
 
   return res.status(200).json(

@@ -22,9 +22,13 @@ export const createPost = asyncHandler(async (req, res) => {
 
   let imageUrl: string | undefined;
 
+  // console.log("FILE:", req.file);
+  // console.log("BODY:", req.body);
+  // console.log("HEADERS:", req.headers["content-type"]);
+
+
   if (imagepath) {
     const image = await uploadOnCloudinary(imagepath);
-
     if (!image?.url) {
       return res.status(400).json(
         new ApiResponse(
