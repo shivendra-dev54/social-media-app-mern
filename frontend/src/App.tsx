@@ -18,7 +18,7 @@ export function ProtectedRoute({ children }: { children: JSX.Element }) {
 function App() {
 
   return (
-    <div className="container-fluid">
+    <div className="w-full">
       <Navbar />
 
       <Routes>
