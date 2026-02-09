@@ -1,142 +1,129 @@
-import { Link } from "react-router";
-
-const Feature = ({ title, desc }: { title: string; desc: string }) => (
-  <div className="col-12 col-md-5">
-    <div className="card bg-dark border-secondary h-100 shadow-sm">
-      <div className="card-body p-4">
-        <h6 className="card-title text-uppercase text-primary fw-semibold mb-2">
-          {title}
-        </h6>
-        <p className="card-text text-secondary mb-0">
-          {desc}
-        </p>
-      </div>
-    </div>
-  </div>
-);
-
-const StackCard = ({
-  title,
-  items,
-}: {
-  title: string;
-  items: string[];
-}) => (
-  <div className="col-12 col-md-6">
-    <div className="card bg-dark border-secondary h-100 shadow-sm">
-      <div className="card-body p-4">
-        <h5 className="card-title text-primary fw-semibold mb-3">
-          {title}
-        </h5>
-        <ul className="list-unstyled text-secondary mb-0">
-          {items.map((item) => (
-            <li key={item} className="mb-1">
-              <span className="me-2">•</span>
-              {item}
-            </li>
-          ))}
-        </ul>
-      </div>
-    </div>
-  </div>
-);
+import { Link, useNavigate } from "react-router";
+import { Feature } from "../components/Feature";
+import { StackCard } from "../components/StackCard";
+import '../styles/homepageStyles.css';
+import { useAuthStore } from "../store/Authstore";
+import { useEffect } from "react";
 
 export const Homepage = () => {
+  const { user } = useAuthStore();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (user) {
+      navigate("/app");
+    }
+  });
+
   return (
-    <main
-      className="text-light py-5"
-      data-bs-theme="dark"
-    >
-      {/* Hero */}
-      <section className="container text-center mb-5">
-        <h1 className="display-4 fw-semibold text-primary mb-3">
-          SocialFlow
-        </h1>
+    <main className="min-h-screen bg-linear-to-b from-slate-950 via-slate-900 to-slate-950 text-slate-100">
 
-        <p className="fs-5 text-secondary mb-4">
-          A minimal, developer-first social media platform
-        </p>
+      <div className="fixed inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-0 left-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl animate-pulse" />
+        <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-blue-600/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }} />
+      </div>
 
-        <p
-          className="mx-auto text-secondary"
-          style={{ maxWidth: 720 }}
-        >
-          SocialFlow is a clean, developer-focused social media application
-          built with predictable state, strong typing, and scalable backend
-          architecture. It prioritizes performance, security, and long-term
-          maintainability over flashy features.
-        </p>
+      <div className="relative">
+        <section className="container mx-auto px-6 py-20 md:py-32 text-center">
+          <div className="max-w-4xl mx-auto">
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-blue-500/10 border border-blue-500/20 rounded-full mb-8 animate-fadeIn">
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75" />
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-blue-500" />
+              </span>
+              <span className="text-sm text-blue-300 font-medium">Developer-First Platform</span>
+            </div>
 
-        {/* CTA */}
-        <div className="mt-4">
-          <Link
-            to="/signup"
-            className="btn btn-primary btn-lg px-4"
-          >
-            Get Started
-          </Link>
-        </div>
-      </section>
+            <h1 className="text-5xl md:text-7xl font-black mb-6 bg-linear-to-r from-blue-400 via-blue-500 to-blue-600 bg-clip-text text-transparent animate-fadeInUp">
+              SocialFlow
+            </h1>
 
-      {/* Features */}
-      <section className="container mb-5">
-        <div className="row justify-content-center g-4">
-          <Feature
-            title="Performance"
-            desc="Optimized APIs, CDN-backed media delivery, and minimal overfetching."
-          />
-          <Feature
-            title="Authentication"
-            desc="Secure JWT-based authentication with httpOnly cookies."
-          />
-        </div>
-      </section>
+            <p className="text-xl md:text-2xl text-slate-300 mb-6 font-light animate-fadeInUp" style={{ animationDelay: '0.1s' }}>
+              A minimal, developer-first social media platform
+            </p>
 
-      {/* Tech Stack */}
-      <section
-        className="container mb-5"
-        style={{ maxWidth: 900 }}
-      >
-        <h2 className="fs-3 fw-semibold text-primary mb-4 text-center text-md-start">
-          Tech Stack
-        </h2>
+            <p className="max-w-2xl mx-auto text-slate-400 leading-relaxed mb-10 animate-fadeInUp" style={{ animationDelay: '0.2s' }}>
+              SocialFlow is a clean, developer-focused social media application
+              built with predictable state, strong typing, and scalable backend
+              architecture. It prioritizes performance, security, and long-term
+              maintainability over flashy features.
+            </p>
 
-        <div className="row g-4">
-          <StackCard
-            title="Backend"
-            items={[
-              "Node.js / Bun",
-              "MongoDB + Mongoose",
-              "JWT (JOSE)",
-              "Cloudinary",
-            ]}
-          />
-          <StackCard
-            title="Frontend"
-            items={[
-              "React",
-              "Bootstrap (Dark)",
-              "React Router",
-              "Zustand",
-              "React Hot Toast",
-            ]}
-          />
-        </div>
-      </section>
+            <div className="animate-fadeInUp" style={{ animationDelay: '0.3s' }}>
+              <Link
+                to="/signup"
+                className="inline-flex items-center gap-2 px-8 py-4 bg-linear-to-r from-blue-600 to-blue-500 hover:from-blue-500 hover:to-blue-600 text-white font-semibold rounded-lg shadow-lg shadow-blue-500/30 transition-all duration-300 hover:shadow-xl hover:shadow-blue-500/40 hover:scale-105 active:scale-95"
+              >
+                Get Started
+                <svg className="w-5 h-5 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                </svg>
+              </Link>
+            </div>
+          </div>
+        </section>
 
-      {/* Footer */}
-      <footer className="container text-center pt-4 border-top border-secondary">
-        <p className="text-secondary mb-1">
-          Created by{" "}
-          <span className="fw-semibold text-primary">
-            Shivendra Devadhe
-          </span>
-        </p>
+        <section className="container mx-auto px-6 py-16">
+          <div className="max-w-5xl mx-auto">
+            <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 bg-linear-to-r from-slate-100 to-slate-300 bg-clip-text text-transparent">
+              Key Features
+            </h2>
+            <div className="grid md:grid-cols-2 gap-6">
+              <Feature
+                title="Performance"
+                desc="Optimized APIs, CDN-backed media delivery, and minimal overfetching ensure lightning-fast load times and smooth user experience."
+              />
+              <Feature
+                title="Authentication"
+                desc="Enterprise-grade security with JWT-based authentication using httpOnly cookies to protect user data and sessions."
+              />
+            </div>
+          </div>
+        </section>
 
-        <p className="fs-5 text-warning fw-bold mb-0">
-          ^_^
-        </p>
-      </footer>
+        <section className="container mx-auto px-6 py-16">
+          <div className="max-w-5xl mx-auto">
+            <h2 className="text-3xl md:text-4xl font-bold mb-12 bg-linear-to-r from-slate-100 to-slate-300 bg-clip-text text-transparent">
+              Tech Stack
+            </h2>
+            <div className="grid md:grid-cols-2 gap-6">
+              <StackCard
+                title="Backend"
+                items={[
+                  "Node.js",
+                  "MongoDB + Mongoose",
+                  "JWT (JOSE)",
+                  "Cloudinary",
+                ]}
+              />
+              <StackCard
+                title="Frontend"
+                items={[
+                  "React",
+                  "Tailwind CSS",
+                  "React Router",
+                  "Zustand",
+                  "React Hot Toast",
+                ]}
+              />
+            </div>
+          </div>
+        </section>
+
+        <footer className="container mx-auto px-6 py-12 mt-20 border-t border-slate-800">
+          <div className="max-w-5xl mx-auto text-center">
+            <p className="text-slate-400 mb-2">
+              Created by{" "}
+              <span className="font-semibold bg-linear-to-r from-blue-400 to-blue-500 bg-clip-text text-transparent">
+                Shivendra Devadhe
+              </span>
+            </p>
+            <p className="text-2xl text-blue-400 font-bold animate-bounce">
+              ^_^
+            </p>
+          </div>
+        </footer>
+      </div>
     </main>
   );
 };

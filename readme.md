@@ -40,7 +40,7 @@ Created by **Shivendra Devadhe**
 ### Frontend
 - React (Vite)
 - TypeScript
-- Bootstrap 5
+- Tailwind
 - Axios
 - Zustand (state management)
 - React Router
