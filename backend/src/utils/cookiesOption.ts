@@ -1,19 +1,19 @@
 import type { CookieOptions } from "express";
 
-const isProd = process.env.NODE_ENV === "production";
-
 export const accessCookieOptions: CookieOptions = {
   httpOnly: true,
-  secure: isProd,
-  sameSite: isProd ? "none" : "lax",
+  secure: true,
+  sameSite: "none",
+  partitioned: true,
   maxAge: 60 * 60 * 1000,
   path: "/",
 };
 
 export const refreshCookieOptions: CookieOptions = {
   httpOnly: true,
-  secure: isProd,
-  sameSite: isProd ? "none" : "lax",
+  secure: true,
+  sameSite: "none",
+  partitioned: true,
   maxAge: 7 * 24 * 60 * 60 * 1000,
   path: "/",
 };
