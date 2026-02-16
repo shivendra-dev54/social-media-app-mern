@@ -4,13 +4,25 @@ import { StackCard } from "../components/StackCard";
 import '../styles/homepageStyles.css';
 import { useAuthStore } from "../store/Authstore";
 import { useEffect } from "react";
+import { api } from "../lib/axios";
 
 export const Homepage = () => {
   const { user } = useAuthStore();
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (user) {
+
+    const getServerHealth = async () => {
+      try {
+        await api.get("/api/health");
+      } catch (err) {
+        console.error(err);
+      }
+    };
+
+    getServerHealth();
+
+    if (user?._id) {
       navigate("/app");
     }
   });

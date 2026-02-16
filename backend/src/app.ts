@@ -6,6 +6,7 @@ import { authRouter } from "./Routes/auth.route.js";
 import { postRouter } from "./Routes/post.route.js";
 import { commentRouter } from "./Routes/comment.route.js";
 import { ApiResponse } from "./utils/ApiResponse.js";
+import { healthRouter } from "./Routes/health.route.js";
 
 const app = express();
 
@@ -57,6 +58,7 @@ app.use(cookieParser());
 app.use(express.json());
 
 // Routes
+app.use(healthRouter);
 app.use(authRouter);
 app.use(postRouter);
 app.use(commentRouter);
