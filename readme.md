@@ -178,6 +178,16 @@ DELETE /api/post/:id
 PATCH  /api/post/:id/like
 ```
 
+### Comments
+
+```
+GET    /api/post
+POST   /api/post
+PATCH  /api/post/:id
+DELETE /api/post/:id
+PATCH  /api/post/:id/like
+```
+
 ---
 
 ## Key Design Decisions
