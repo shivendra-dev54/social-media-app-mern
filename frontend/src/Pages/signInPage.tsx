@@ -31,7 +31,6 @@ export const SigninPage = () => {
         return;
       }
 
-      console.log(result.data);
       setUser(result.data);
       toast.success(result.message);
       navigate("/app");
