@@ -4,7 +4,12 @@ import { persist } from "zustand/middleware";
 interface User {
   _id: string;
   username: string;
+  fullname?: string;
+  bio?: string;
+  avatar?: string;
   email: string;
+  followers?: User[];
+  following?: User[];
 }
 
 interface AuthState {

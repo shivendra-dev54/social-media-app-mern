@@ -7,6 +7,7 @@ import { postRouter } from "./Routes/post.route.js";
 import { commentRouter } from "./Routes/comment.route.js";
 import { ApiResponse } from "./utils/ApiResponse.js";
 import { healthRouter } from "./Routes/health.route.js";
+import { userRouter } from "./Routes/user.route.js";
 
 const app = express();
 
@@ -62,6 +63,7 @@ app.use(healthRouter);
 app.use(authRouter);
 app.use(postRouter);
 app.use(commentRouter);
+app.use(userRouter);
 
 // Health
 app.get('/health', (req, res) => {

@@ -31,9 +31,12 @@ export const Navbar = () => {
           <div>
             {user ? (
               <div className="flex items-center gap-4">
-                <span className="hidden md:block text-slate-400 text-sm">
-                  Welcome, <span className="text-blue-400 font-semibold">{user.username}</span>
-                </span>
+                <button
+                  onClick={() => navigate("app/profile")}
+                  className="px-4 py-2 bg-green-500/10 hover:bg-green-500/20 text-green-400 border border-green-500/30 hover:border-green-500/50 rounded-lg font-medium transition-all duration-300 hover:shadow-lg hover:shadow-green-500/20 active:scale-95"
+                >
+                  Profile
+                </button>
                 <button
                   onClick={handleLogout}
                   className="px-4 py-2 bg-red-500/10 hover:bg-red-500/20 text-red-400 border border-red-500/30 hover:border-red-500/50 rounded-lg font-medium transition-all duration-300 hover:shadow-lg hover:shadow-red-500/20 active:scale-95"

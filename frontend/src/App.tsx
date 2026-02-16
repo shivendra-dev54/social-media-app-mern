@@ -8,6 +8,7 @@ import { useAuthStore } from "./store/Authstore";
 import type { JSX } from "react";
 import UpdatePost from "./Pages/UpdatePost";
 import PostCommentsPage from "./Pages/PostCommentsPage";
+import Profile from "./Pages/Profile.page";
 
 export function ProtectedRoute({ children }: { children: JSX.Element }) {
   const { user } = useAuthStore();
@@ -28,6 +29,11 @@ function App() {
         <Route path="/app" element={
           <ProtectedRoute>
             <Feed />
+          </ProtectedRoute>
+        } />
+        <Route path="/app/profile" element={
+          <ProtectedRoute>
+            <Profile />
           </ProtectedRoute>
         } />
         <Route path="/app/post/:id/edit" element={
