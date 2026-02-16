@@ -7,11 +7,7 @@ const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 export const api = axios.create({
   baseURL: BACKEND_URL,
   withCredentials: true,
-  headers: {
-    "Content-Type": "application/json",
-  },
 });
-
 
 interface FailedRequest {
   resolve: (value?: unknown) => void;
@@ -32,7 +28,6 @@ const processQueue = (error: Error | null = null) => {
   failedQueue = [];
 };
 
-
 api.interceptors.response.use(
   (response) => response,
   async (error: AxiosError) => {
@@ -43,7 +38,6 @@ api.interceptors.response.use(
     }
 
     if (error.response?.status === 401 && !originalRequest._retry) {
-
       if (isRefreshing) {
         return new Promise((resolve, reject) => {
           failedQueue.push({ resolve, reject });
@@ -57,21 +51,17 @@ api.interceptors.response.use(
 
       try {
         await api.post("/api/auth/refresh");
-
         processQueue(null);
         isRefreshing = false;
         return api(originalRequest);
-
       } catch (refreshError) {
         processQueue(new Error("Token refresh failed"));
         isRefreshing = false;
-
         useAuthStore.getState().logout();
 
         if (typeof window !== "undefined" && !window.location.pathname.startsWith("/auth")) {
           toast.error("Session expired. Please login again.");
         }
-
         return Promise.reject(refreshError);
       }
     }
